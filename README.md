@@ -2,7 +2,7 @@
 
 ![Build Status](https://snap-ci.com/RosyTucker/CodeNight/branch/master/build_image)
 
-CodeNight is an organisation aimed at pairing up experienced and less experienced developers in order to solve problems together ... and have beer. This repository holds the source code for the codenight backend
+CodeNight is an organisation aimed at pairing up experienced and less experienced developers in order to solve problems together ... and have beer. This repository holds the source code for the codenight backend.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This will start the development server at [http://localhost:3000](http://localho
 
 ## Test
 
-TBC
+    lein test
 
 ## License
 
