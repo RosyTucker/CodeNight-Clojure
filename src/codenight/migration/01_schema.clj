@@ -1,15 +1,14 @@
 (ns codenight.migration.01_schema
-    (:require [clojure.java.jdbc :as sql]))
-
-(def postgres (or (System/getenv "DATABASE_URL") "postgresql://localhost:5432/codenight"))
+    (:require [clojure.java.jdbc :as sql]
+              [codenight.datastore :as datastore]))
 
 (defn has-migrated? []
-  (pos? (:count (first (sql/query postgres "select count(*) from information_schema.tables where table_name='users'")))))
+  (pos? (:count (first (sql/query datastore/postgres "select count(*) from information_schema.tables where table_name='users'")))))
 
 (defn migrate []
     (when (not (has-migrated?))
           (println "Creating database")
-          (sql/db-do-commands postgres
+          (sql/db-do-commands datastore/postgres
              (sql/create-table-ddl
                :users
                [:id :serial "PRIMARY KEY"]
