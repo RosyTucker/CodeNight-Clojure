@@ -1,9 +1,10 @@
  (ns codenight.model.user
-  (:require [clojure.java.jdbc :as sql]))
+  (:require [clojure.java.jdbc :as sql]
+  			[codenight.datastore :as datastore]))
 
 (defn all []
-    (into [] (sql/query spec ["select * from users order by id desc"])))
+    (into [] (sql/query datastore ["select * from users order by id desc"])))
 
 (defn create [name description email password]
-    (sql/insert! spec :users
+    (sql/insert! datastore :users
        {:name name :description description :email_address email :password password}))
