@@ -1,4 +1,4 @@
-(ns codenight.auth
+(ns codenight.github
   (:refer-clojure :exclude [get])
   (:require [clj-http.client :as http])
   (:use [clj-oauth2.client :only [make-auth-request get-access-token]]))
@@ -27,3 +27,9 @@
 (defn get-user [request]
      (let [authorization-header (auth-header request)]
         (http/get "https://api.github.com/user" {:headers {:Authorization authorization-header}})))
+
+(defn get-emails [request]
+     (let [authorization-header (auth-header request)]
+        (http/get "https://api.github.com/user/emails" {:headers {:Authorization authorization-header}})))
+
+
