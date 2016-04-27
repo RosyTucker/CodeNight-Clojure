@@ -21,7 +21,9 @@
 
 (defn- access-token-params [auth-req] (get-access-token github-oauth2-params (:params auth-req) login))
 
-(defn- auth-header [request] (str "token " (:access-token (access-token-params request))))
+(defn- auth-header [token] (str "token " token))
+
+(defn access-token [request] (:access-token (access-token-params request)))
 
 ;Methods
 (defn get-user [request]
